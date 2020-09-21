@@ -1,0 +1,92 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+\usepackage{tikz}
+\usetikzlibrary{shadings}
+
+%\usetheme{Warsaw}
+%\usecolortheme{seagull}
+%\usefonttheme{professionalfonts}
+\setbeamercovered{transparent=0}
+
+\definecolor{spx_gray}{RGB}{145,146,149}
+\definecolor{spx_blue}{RGB}{64,100,131}
+\definecolor{frametitle_light}{RGB}{230,230,230}
+\definecolor{frametitle_dark}{RGB}{122,116,120}
+
+
+\setbeamercolor{section in head/foot}{fg=white,bg=spx_blue}
+\setbeamercolor{subsection in head/foot}{fg=spx_blue,bg=white}
+\setbeamercolor{frametitle}{fg=black,bg=}
+
+\pgfdeclarehorizontalshading{beamer@frametitleshade}{\paperheight}{
+    color(0pt)=(frametitle_light);
+    color(\paperwidth)=(frametitle_dark)
+}
+
+\makeatletter
+
+\setbeamertemplate{frametitle}
+{%
+    \nointerlineskip%
+    \vskip-2.8pt%
+    \hbox{\leavevmode
+        \advance\beamer@leftmargin by -12bp%
+        \advance\beamer@rightmargin by -12bp%
+        \beamer@tempdim=\textwidth%
+        \advance\beamer@tempdim by \beamer@leftmargin%
+        \advance\beamer@tempdim by \beamer@rightmargin%
+        \hskip-\Gm@lmargin\hbox{%
+            \setbox\beamer@tempbox=\hbox{\begin{minipage}[b]{\paperwidth}%
+                    %\vbox{}\vskip-.75ex%
+                    \leftskip0.3cm%
+                    %\rightskip0.3cm plus1fil\leavevmode
+                    \insertframetitle%
+                    \ifx\insertframesubtitle\@empty%
+                    \hfill
+                    \raisebox{-1.8mm}{\includegraphics[width=5.0em, height=1.4em]{template/SPX_logo.jpg}}
+                    \strut\par%
+                    \else
+                    \par{\usebeamerfont*{framesubtitle}{\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}\strut\par}%
+                    \fi%
+                    \nointerlineskip
+                    \vbox{}%
+            \end{minipage}}%
+            \beamer@tempdim=\ht\beamer@tempbox%
+            \advance\beamer@tempdim by 2pt%
+            \begin{pgfpicture}{0pt}{0pt}{\paperwidth}{\beamer@tempdim}
+                \usebeamercolor{frametitle right}
+                \pgfpathrectangle{\pgfpointorigin}{\pgfpoint{\paperwidth}{\beamer@tempdim}}
+                \pgfusepath{clip}
+                \pgftext[left,base]{\pgfuseshading{beamer@frametitleshade}}
+            \end{pgfpicture}
+            \hskip-\paperwidth%
+            \box\beamer@tempbox%
+        }%
+        \hskip-\Gm@rmargin%
+    }%
+    \nointerlineskip
+    \vskip-0.2pt
+    \hbox to\textwidth{\hskip-\Gm@lmargin\pgfuseshading{beamer@topshade}\hskip-\Gm@rmargin}
+    \vskip-2pt
+}
+
+\makeatother
+
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{placeins}
+\usepackage{hyperref}
+\usepackage{draftwatermark}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{bibentry}
+\usepackage{graphicx} % Allows including images
+\usepackage[usestackEOL]{stackengine}
+\setbeamercolor{background canvas}{bg=}%transparent canvas
+
+\SetWatermarkScale{0.5}
+\SetWatermarkColor[gray]{0.98}
